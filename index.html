@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wetter & Präsentation – Leipzig-Lößnig</title>
+  <title>Wetter &amp; Präsentation – Leipzig-Lößnig</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -12,10 +12,10 @@
 <body>
   <main class="page-layout">
 
-    <!-- LINKE SEITE: Video randlos -->
+    <!-- LINKE SEITE: Video randlos, Autostart, Endlosschleife -->
     <section class="media-panel">
       <div class="video-frame">
-        <video controls preload="metadata" poster="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1280&q=80">
+        <video autoplay loop muted playsinline>
           <source src="assets/praesentation.mp4" type="video/mp4" />
           Dein Browser kann dieses Video nicht abspielen.
         </video>
@@ -53,7 +53,7 @@
         <article class="card">
           <h3>Empfohlenes Oberteil</h3>
           <div class="clothing-reco">
-            <span class="clothing-icon" id="clothingIcon">🧥</span>
+            <span class="clothing-icon" id="clothingIcon">👕</span>
             <div>
               <p class="clothing-title" id="clothingTitle">Lade Empfehlung …</p>
               <p class="muted" id="clothingHint">Bitte einen Moment.</p>
@@ -62,11 +62,9 @@
         </article>
       </div>
 
-      <section class="card forecast-section">
+      <section class="forecast-section card">
         <h3>Vorhersage für die nächsten 3 Tage</h3>
-        <div class="forecast-grid" id="forecast">
-          <p class="muted">Vorhersage wird geladen …</p>
-        </div>
+        <div class="forecast-grid" id="forecast"></div>
       </section>
 
     </aside>
