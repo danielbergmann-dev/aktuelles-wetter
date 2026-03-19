@@ -23,16 +23,20 @@ body {
   color: var(--text);
 }
 
-/* === Haupt-Layout: 100vh, kein Aussenabstand === */
+/* ===================================================
+   HAUPT-LAYOUT: Video links (3fr) | Wetter rechts (1fr)
+   =================================================== */
 .page-layout {
   display: grid;
-  grid-template-columns: 2.5fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 8px;
   height: 100vh;
   padding: 8px;
 }
 
-/* === LINKE SEITE: Video komplett randlos === */
+/* ===================================================
+   LINKE SEITE: Video füllt 100% aus
+   =================================================== */
 .media-panel {
   display: flex;
   height: 100%;
@@ -55,7 +59,9 @@ body {
   display: block;
 }
 
-/* === RECHTE SEITE: Wetterdaten scrollbar === */
+/* ===================================================
+   RECHTE SEITE: Wetter-Panel, volle Höhe ausnutzen
+   =================================================== */
 .weather-panel {
   display: flex;
   flex-direction: column;
@@ -64,65 +70,91 @@ body {
   overflow-y: auto;
 }
 
-/* === Cards === */
+/* Cards strecken sich gleichmäßig über die volle Höhe */
+.weather-panel > * {
+  flex-shrink: 0;
+}
+
+.weather-panel .forecast-section {
+  flex: 1; /* Vorhersage füllt restlichen Platz */
+}
+
+/* ===================================================
+   CARDS
+   =================================================== */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 0.85rem;
+  padding: 1rem 0.9rem;
   box-shadow: 0 4px 12px rgba(31, 45, 61, 0.08);
-  flex-shrink: 0;
 }
 
+/* ===================================================
+   AKTUELLES WETTER
+   =================================================== */
 .current-weather {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 0.6rem;
-  align-items: center;
+}
+
+.current-weather h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
 }
 
 .weather-overview {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .weather-emoji {
-  font-size: 2.4rem;
+  font-size: 3.2rem;
+  line-height: 1;
 }
 
 .weather-summary {
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .temperature {
-  font-size: 1.7rem;
+  font-size: 2.4rem;
   font-weight: 800;
+  line-height: 1;
 }
 
 .muted {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
+/* ===================================================
+   THERMOMETER + KLEIDUNG nebeneinander
+   =================================================== */
 .advice-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
-/* Thermometer */
 .thermometer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  gap: 0.5rem;
+  padding-top: 0.3rem;
 }
 
 .therm-track {
-  width: 28px;
-  height: 120px;
+  width: 26px;
+  height: 100px;
   border-radius: 999px;
   background: #eef4ff;
   border: 2px solid #bfd6f5;
@@ -140,58 +172,103 @@ body {
 }
 
 .therm-label {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 800;
+  text-align: center;
 }
 
-/* Kleidung */
+.card h3 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+/* ===================================================
+   KLEIDUNGSEMPFEHLUNG: großes Icon, volle Höhe
+   =================================================== */
 .clothing-reco {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  margin-top: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  height: 100%;
+  padding-top: 0.3rem;
 }
 
 .clothing-icon {
-  font-size: 2.2rem;
+  font-size: 3.5rem;
+  line-height: 1;
 }
 
 .clothing-title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 800;
+  line-height: 1.3;
 }
 
-/* Vorhersage */
+.clothing-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ===================================================
+   3-TAGE VORHERSAGE
+   =================================================== */
 .forecast-section {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .forecast-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  flex: 1;
 }
 
 .forecast-day {
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.6rem;
-  background: #f7fbff;
-  text-align: center;
+  padding: 0.55rem 0.7rem;
+  background: #f0f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  flex: 1;
 }
 
 .forecast-day h3 {
   font-size: 0.85rem;
-  margin-bottom: 0.3rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.forecast-day p {
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 
 .temp-range {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.85rem;
+  color: var(--text) !important;
+  white-space: nowrap;
 }
 
-/* === Responsive: untereinander unter 900px === */
+/* ===================================================
+   RESPONSIVE: untereinander unter 900px
+   =================================================== */
 @media (max-width: 900px) {
   html, body {
     overflow: auto;
@@ -207,5 +284,11 @@ body {
   .weather-panel {
     height: auto;
     overflow-y: visible;
+  }
+  .advice-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .forecast-grid {
+    flex-direction: row;
   }
 }
