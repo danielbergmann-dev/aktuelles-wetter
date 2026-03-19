@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wetter & Präsentation – Leipzig-Lößnig</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-layout">
+
+    <!-- LINKE SEITE: Video / Präsentation 16:9 -->
+    <section class="media-panel card" aria-labelledby="mediaTitle">
+      <div class="media-head">
+        <p class="badge">Klassen-Präsentation</p>
+        <h1 id="mediaTitle">Video / PowerPoint für den Unterricht</h1>
+        <p class="subtitle">16:9 Ansicht für eine klare, große Darstellung im Klassenraum.</p>
+      </div>
+
+      <div class="video-frame">
+        <video controls preload="metadata" poster="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1280&q=80">
+          <source src="assets/praesentation.mp4" type="video/mp4" />
+          Dein Browser kann dieses Video nicht abspielen.
+        </video>
+      </div>
+
+      <p class="media-note">
+        Tipp: Lege deine Datei als <strong><code>assets/praesentation.mp4</code></strong> ab. Falls ihr statt Video eine PowerPoint-Datei habt, exportiert sie vorher als MP4.
+      </p>
+    </section>
+
+    <!-- RECHTE SEITE: Wetterdaten -->
+    <aside class="weather-panel" aria-label="Wetterinformationen für Leipzig-Lößnig">
+
+      <header class="hero card">
+        <p class="badge">Klassen-Wetterstation</p>
+        <h2>Leipzig-Lößnig</h2>
+        <p class="subtitle">Kindgerecht, übersichtlich und jeden Tag aktuell.</p>
+      </header>
+
+      <section class="current-weather card" aria-live="polite">
+        <div>
+          <h3>So ist das Wetter jetzt</h3>
+          <p id="currentTime" class="muted">Lade aktuelle Daten …</p>
+        </div>
+        <div class="weather-overview">
+          <span id="weatherIcon" class="weather-emoji" aria-hidden="true">⛅</span>
+          <div>
+            <p id="weatherSummary" class="weather-summary">Bitte warten …</p>
+            <p id="temperature" class="temperature">-- °C</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="advice-grid">
+        <article class="card therm-card">
+          <h3>Thermometer</h3>
+          <div class="thermometer">
+            <div class="therm-track">
+              <div class="therm-fill" id="thermFill"></div>
+            </div>
+            <p class="therm-label" id="thermLabel">-- °C</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Empfohlenes Oberteil</h3>
+          <div class="clothing-reco">
+            <span class="clothing-icon" id="clothingIcon">🧥</span>
+            <div>
+              <p class="clothing-title" id="clothingTitle">Lade Empfehlung …</p>
+              <p class="muted" id="clothingHint">Bitte einen Moment.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <section class="card forecast-section">
+        <h3>Vorhersage für die nächsten 3 Tage</h3>
+        <div class="forecast-grid" id="forecast">
+          <p class="muted">Vorhersage wird geladen …</p>
+        </div>
+      </section>
+
+    </aside>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
