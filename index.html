@@ -12,34 +12,18 @@
 <body>
   <main class="page-layout">
 
-    <!-- LINKE SEITE: Video / Präsentation 16:9 -->
-    <section class="media-panel card" aria-labelledby="mediaTitle">
-      <div class="media-head">
-        <p class="badge">Klassen-Präsentation</p>
-        <h1 id="mediaTitle">Video / PowerPoint für den Unterricht</h1>
-        <p class="subtitle">16:9 Ansicht für eine klare, große Darstellung im Klassenraum.</p>
-      </div>
-
+    <!-- LINKE SEITE: Video randlos -->
+    <section class="media-panel">
       <div class="video-frame">
         <video controls preload="metadata" poster="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1280&q=80">
           <source src="assets/praesentation.mp4" type="video/mp4" />
           Dein Browser kann dieses Video nicht abspielen.
         </video>
       </div>
-
-      <p class="media-note">
-        Tipp: Lege deine Datei als <strong><code>assets/praesentation.mp4</code></strong> ab. Falls ihr statt Video eine PowerPoint-Datei habt, exportiert sie vorher als MP4.
-      </p>
     </section>
 
     <!-- RECHTE SEITE: Wetterdaten -->
     <aside class="weather-panel" aria-label="Wetterinformationen für Leipzig-Lößnig">
-
-      <header class="hero card">
-        <p class="badge">Klassen-Wetterstation</p>
-        <h2>Leipzig-Lößnig</h2>
-        <p class="subtitle">Kindgerecht, übersichtlich und jeden Tag aktuell.</p>
-      </header>
 
       <section class="current-weather card" aria-live="polite">
         <div>
