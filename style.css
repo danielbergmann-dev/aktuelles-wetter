@@ -25,7 +25,7 @@ body {
 
 /* ===================================================
    HAUPT-LAYOUT: Video links (3fr) | Wetter rechts (1fr)
-   =================================================== */
+   ===================================================== */
 .page-layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -35,8 +35,8 @@ body {
 }
 
 /* ===================================================
-   LINKE SEITE: Video füllt 100% aus
-   =================================================== */
+   LINKE SEITE: Video zu 100% ausgefuellt
+   ===================================================== */
 .media-panel {
   display: flex;
   height: 100%;
@@ -60,8 +60,8 @@ body {
 }
 
 /* ===================================================
-   RECHTE SEITE: Wetter-Panel, volle Höhe
-   =================================================== */
+   RECHTE SEITE: Wetter-Panel, volle Hoehe
+   ===================================================== */
 .weather-panel {
   display: flex;
   flex-direction: column;
@@ -76,8 +76,8 @@ body {
 }
 
 /* ===================================================
-   CARDS
-   =================================================== */
+   KARTEN
+   ===================================================== */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -97,7 +97,7 @@ body {
 
 /* ===================================================
    AKTUELLES WETTER
-   =================================================== */
+   ===================================================== */
 .current-weather {
   display: flex;
   flex-direction: column;
@@ -140,7 +140,7 @@ body {
 
 /* ===================================================
    THERMOMETER + KLEIDUNG nebeneinander
-   =================================================== */
+   ===================================================== */
 .advice-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -208,8 +208,8 @@ body {
 }
 
 /* ===================================================
-   3-TAGE VORHERSAGE – größere Darstellung
-   =================================================== */
+   3-TAGE VORHERSAGE - groessere Darstellung
+   ===================================================== */
 .forecast-section {
   display: flex;
   flex-direction: column;
@@ -235,9 +235,9 @@ body {
   flex: 1;
 }
 
-/* Tag-Name: Fr., 20.03. */
+/* Tag-Name */
 .forecast-day h3 {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--text);
   text-transform: none;
@@ -247,30 +247,31 @@ body {
   white-space: nowrap;
 }
 
-/* Wetter-Icon + Beschreibung */
+/* Wetter-Icon */
 .forecast-day .fc-icon {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   line-height: 1;
 }
 
+/* Beschreibung */
 .forecast-day .fc-desc {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--muted);
   flex: 1;
   text-align: center;
 }
 
-/* Temperatur: 11 °C / 3 °C */
+/* Temperatur: 11 C / 3 C */
 .temp-range {
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--text) !important;
   white-space: nowrap;
 }
 
 /* ===================================================
    RESPONSIVE: untereinander unter 900px
-   =================================================== */
+   ===================================================== */
 @media (max-width: 900px) {
   html, body { overflow: auto; }
   .page-layout {
