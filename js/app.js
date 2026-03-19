@@ -126,37 +126,40 @@ async function loadWeather() {
   elements.weatherIcon.textContent = today.icon;
   elements.weatherSummary.textContent = today.label;
   elements.temperature.textContent = `${Math.round(current.temperature_2m)} °C`;
-
   setThermometer(current.temperature_2m);
 
-  const recommendation = clothingRecommendation(
+  const rec = clothingRecommendation(
     current.temperature_2m,
     current.weather_code,
     current.wind_speed_10m,
   );
-  elements.clothingIcon.textContent = recommendation.icon;
-  elements.clothingTitle.textContent = recommendation.title;
-  elements.clothingHint.textContent = recommendation.hint;
+  elements.clothingIcon.textContent = rec.icon;
+  elements.clothingTitle.textContent = rec.title;
+  elements.clothingHint.textContent = rec.hint;
 
-  const forecastItems = data.daily.time.slice(1, 4).map((date, index) => {
-    const code = data.daily.weather_code[index + 1];
+  const forecastItems = data.daily.time.slice(1, 4).map((date, i) => {
+    const code = data.daily.weather_code[i + 1];
     const info = getWeatherInfo(code);
-    const max = Math.round(data.daily.temperature_2m_max[index + 1]);
-    const min = Math.round(data.daily.temperature_2m_min[index + 1]);
+    const max = Math.round(data.daily.temperature_2m_max[i + 1]);
+    const min = Math.round(data.daily.temperature_2m_min[i + 1]);
     return `<article class="forecast-day">
       <h3>${formatDay(date)}</h3>
-      <p>${info.icon} ${info.label}</p>
-      <p class="temp-range">${max} °C / ${min} °C</p>
+      <span class="fc-icon">${info.icon}</span>
+      <span class="fc-desc">${info.label}</span>
+      <span class="temp-range">${max} °C / ${min} °C</span>
     </article>`;
   });
   elements.forecast.innerHTML = forecastItems.join('');
 }
 
-loadWeather().catch((error) => {
-  elements.weatherSummary.textContent = 'Ups, die Wetterdaten sind gerade nicht erreichbar.';
+// Beim Start laden
+loadWeather().catch(() => {
+  elements.weatherSummary.textContent = 'Wetterdaten gerade nicht erreichbar.';
   elements.clothingTitle.textContent = 'Heute auf Nummer sicher gehen';
-  elements.clothingHint.textContent = 'Bitte schaut kurz aus dem Fenster und entscheidet gemeinsam.';
-  elements.forecast.innerHTML = `<p>${error.message}</p>`;
+  elements.clothingHint.textContent = 'Kurz aus dem Fenster schauen!';
 });
 
-setInterval(loadWeather, 10 * 60 * 1000);
+// Alle 5 Minuten automatisch aktualisieren
+setInterval(() => {
+  loadWeather().catch(() => {});
+}, 5 * 60 * 1000);
