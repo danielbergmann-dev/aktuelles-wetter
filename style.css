@@ -24,25 +24,23 @@ body {
 }
 
 /* ===================================================
-   HAUPT-LAYOUT: Video links (3fr) | Wetter rechts (1fr)
+   HAUPT-LAYOUT
    ===================================================== */
 .page-layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 8px;
+  gap: 0.5vh;
   height: 100vh;
-  padding: 8px;
+  padding: 0.5vh;
 }
 
 /* ===================================================
-   LINKE SEITE: Video fuellt den Bereich komplett aus
-   Hintergrund weiss = passt zur PowerPoint-Praesentation
+   LINKE SEITE: Video
    ===================================================== */
 .media-panel {
   height: 100%;
   overflow: hidden;
-  border-radius: 12px;
-  /* Weisser Hintergrund - unsichtbare Restflaeche statt schwarze Balken */
+  border-radius: 1vh;
   background: #ffffff;
 }
 
@@ -54,45 +52,40 @@ body {
 .video-frame video {
   width: 100%;
   height: 100%;
-  /* contain: zeigt alles, Restflaeche hat weissen Hintergrund vom media-panel */
   object-fit: contain;
   display: block;
 }
 
 /* ===================================================
-   RECHTE SEITE: Wetter-Panel, volle Hoehe
+   RECHTE SEITE: Wetter – kein Scroll, alles passt rein
+   Schriften per clamp() dynamisch skaliert
    ===================================================== */
 .weather-panel {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  height: 100%;
-  overflow-y: auto;
-}
-
-.weather-panel .forecast-section {
-  flex: 1;
-  min-height: 0;
+  gap: 0.5vh;
+  height: 100vh;
+  overflow: hidden; /* KEIN Scrollbalken */
 }
 
 /* ===================================================
-   KARTEN
+   KARTEN – kompaktes Padding via vh
    ===================================================== */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(31, 45, 61, 0.08);
+  border-radius: 1vh;
+  padding: 0.8vh 0.7vw;
+  box-shadow: 0 2px 8px rgba(31,45,61,0.07);
   flex-shrink: 0;
 }
 
 .card h3 {
-  font-size: 0.82rem;
+  font-size: clamp(0.55rem, 0.9vh, 0.85rem);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4vh;
 }
 
 /* ===================================================
@@ -101,11 +94,11 @@ body {
 .current-weather {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3vh;
 }
 
 .current-weather h3 {
-  font-size: 0.82rem;
+  font-size: clamp(0.55rem, 0.9vh, 0.85rem);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -114,50 +107,51 @@ body {
 .weather-overview {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5vw;
 }
 
 .weather-emoji {
-  font-size: 4.5rem;
+  font-size: clamp(2rem, 6vh, 5rem);
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .weather-summary {
-  font-size: 1.3rem;
+  font-size: clamp(0.8rem, 1.8vh, 1.4rem);
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .temperature {
-  font-size: 2.8rem;
+  font-size: clamp(1.4rem, 3.5vh, 3rem);
   font-weight: 800;
   line-height: 1;
 }
 
 .muted {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: clamp(0.55rem, 0.9vh, 0.85rem);
 }
 
 /* ===================================================
-   THERMOMETER + KLEIDUNG nebeneinander
+   THERMOMETER + KLEIDUNG
    ===================================================== */
 .advice-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 0.5vh;
 }
 
 .thermometer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding-top: 0.2rem;
+  gap: 0.3vh;
 }
 
 .therm-track {
-  width: 28px;
-  height: 110px;
+  width: clamp(16px, 1.5vw, 28px);
+  height: clamp(50px, 10vh, 110px);
   border-radius: 999px;
   background: #eef4ff;
   border: 2px solid #bfd6f5;
@@ -175,7 +169,7 @@ body {
 }
 
 .therm-label {
-  font-size: 1.4rem;
+  font-size: clamp(0.85rem, 1.8vh, 1.4rem);
   font-weight: 800;
   text-align: center;
 }
@@ -185,58 +179,69 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.3vh;
   text-align: center;
   height: 100%;
 }
 
 .clothing-icon {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 5vh, 3.8rem);
   line-height: 1;
 }
 
 .clothing-title {
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1.4vh, 1rem);
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .clothing-hint {
-  font-size: 0.8rem;
+  font-size: clamp(0.55rem, 1vh, 0.8rem);
   color: var(--muted);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /* ===================================================
-   3-TAGE VORHERSAGE
+   3-TAGE VORHERSAGE – flex:1 damit sie den Rest ausfuellt
    ===================================================== */
 .forecast-section {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.forecast-section.card {
+  padding-bottom: 0.5vh;
 }
 
 .forecast-grid {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 0.5rem;
+  gap: 0.4vh;
+  margin-top: 0.3vh;
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .forecast-day {
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
+  border-radius: 0.8vh;
+  padding: 0 0.7vw;
   background: #f0f7ff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.6rem;
+  gap: 0.3vw;
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .forecast-day h3 {
-  font-size: 1.25rem;
+  font-size: clamp(0.75rem, 1.6vh, 1.25rem);
   font-weight: 800;
   color: var(--text);
   text-transform: none;
@@ -247,21 +252,24 @@ body {
 }
 
 .forecast-day .fc-icon {
-  font-size: 3.2rem;
+  font-size: clamp(1.4rem, 4vh, 3.2rem);
   line-height: 1;
   flex-shrink: 0;
 }
 
 .forecast-day .fc-desc {
-  font-size: 1rem;
+  font-size: clamp(0.65rem, 1.2vh, 1rem);
   color: var(--muted);
   flex: 1;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .temp-range {
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: clamp(0.75rem, 1.6vh, 1.3rem);
   color: var(--text) !important;
   white-space: nowrap;
 }
@@ -275,6 +283,7 @@ body {
     grid-template-columns: 1fr;
     height: auto;
     padding: 8px;
+    gap: 8px;
   }
   .media-panel { height: 56vw; }
   .weather-panel {
